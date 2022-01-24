@@ -1,0 +1,26 @@
+services:
+  server:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 #uvicorn main:app
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+
+  entry:
+    image: nginx:1.17
+    container_name: entry
+    hostname: entry
+    depends_on:
+      - server
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+
+    ports:
+      - 80:80
+    env_file:
+      - .env
+    restart: always

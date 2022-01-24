@@ -1,0 +1,16 @@
+GET localhost:8000/docs
+api_key: test
+
+###
+
+POST localhost:8000/notifications/broadcast
+api_key: test
+Content-Type: application/json
+
+{
+    "notification": {
+        "text": "hello from broadcast"
+    }
+}
+
+###

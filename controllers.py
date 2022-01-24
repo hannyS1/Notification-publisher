@@ -36,7 +36,7 @@ async def event_notification(data: NotificationEventDTO):
     return JSONResponse(HTTPStatus.OK)
 
 
-@root.websocket('/')
+@root.websocket('/notifications')
 async def websocket_root(websocket: WebSocket):
     try:
         user = await manager.connect(websocket)
