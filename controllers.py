@@ -10,7 +10,7 @@ from services import UserConnectionManager
 
 manager = UserConnectionManager()
 
-root = APIRouter(prefix='/notifications')
+root = APIRouter(prefix='/api/notifications')
 
 
 @root.post('/private')

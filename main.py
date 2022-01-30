@@ -10,7 +10,7 @@ app = FastAPI()
 
 @app.middleware('http')
 async def check_api_key(request: Request, call_next):
-    api_key = request.headers.get('api_key', None)
+    api_key = request.headers.get('ApiKey', None)
     if not api_key:
         return Response('No api_key specified', status_code=HTTPStatus.BAD_REQUEST)
     if api_key != settings.API_KEY:
